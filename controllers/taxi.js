@@ -1,8 +1,30 @@
 var taxi = require('../models/taxi');
-// List of all taxis
-exports.taxi_list = function(req, res) {
-res.send('NOT IMPLEMENTED: taxi list');
-};
+// List of all taxi
+
+// List of all taxi
+exports.taxi_list = async function(req, res) {
+    try{
+    thetaxi = await taxi.find();
+    res.send(thetaxi);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+
+    //List of all taxi
+    exports.taxi_list = async function(req, res) {
+    try{
+    thetaxi = await taxi.find();
+    res.send(thetaxi);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    }
+    
 // for a specific taxi.
 exports.taxi_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: taxi detail: ' + req.params.id);
