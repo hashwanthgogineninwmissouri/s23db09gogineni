@@ -14,3 +14,6 @@ var router = express.Router();
 /* GET taxi */
 router.get('/', taxi_controlers.taxi_view_all_Page );
 module.exports = router;
+
+// GET request for one taxi.
+router.get('/taxi/:id', taxi_controlers.taxi_detail);

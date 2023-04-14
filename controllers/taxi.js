@@ -28,8 +28,19 @@ exports.taxi_list = async function(req, res) {
     
     
 // for a specific taxi.
-exports.taxi_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: taxi detail: ' + req.params.id);
+// exports.taxi_detail = function(req, res) {
+// res.send('NOT IMPLEMENTED: taxi detail: ' + req.params.id);
+// };
+// for a specific taxi.
+exports.taxi_detail = async function(req, res) {
+console.log("detail" + req.params.id)
+try {
+result = await taxi.findById( req.params.id)
+res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
 };
 // Handle taxi create on POST.
 // Handle taxi create on POST.
@@ -56,10 +67,26 @@ exports.taxi_create_post = async function(req, res) {
 exports.taxi_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: taxi delete DELETE ' + req.params.id);
 };
-// Handle taxi update form on PUT.
-exports.taxi_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: taxi update PUT' + req.params.id);
-};
+//  Handle taxi update form on PUT.
+exports.taxi_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await taxi.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.taxi_type)
+    toUpdate.taxi_type = req.body.taxi_type;
+    if(req.body.cost) toUpdate.cost = req.body.cost;
+    if(req.body.size) toUpdate.size = req.body.size;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
 // VIEWS
 // Handle a show all view
 exports.taxi_view_all_Page = async function(req, res) {
@@ -72,5 +99,6 @@ exports.taxi_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+
 
     
