@@ -7,3 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+var express = require('express');
+const taxi_controlers= require('../controllers/taxi');
+var router = express.Router();
+/* GET taxi */
+router.get('/', taxi_controlers.taxi_view_all_Page );
+module.exports = router;
