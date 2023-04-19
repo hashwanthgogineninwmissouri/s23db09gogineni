@@ -122,4 +122,22 @@ exports.taxi_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+
+// Handle building the view for creating a taxi.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.taxi_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('taxicreate', { title: 'taxi Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+
+
+    
     

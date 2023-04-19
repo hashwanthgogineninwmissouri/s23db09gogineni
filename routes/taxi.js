@@ -20,3 +20,10 @@ router.get('/taxi/:id', taxi_controlers.taxi_detail);
 
 /* GET detail taxi page */
 router.get('/detail', taxi_controlers.taxi_view_one_Page);
+
+/* GET create taxi page */
+router.get('/create', taxi_controlers.taxi_create_Page);
+
+/* GET create update page */
+router.get('/update', taxi_controlers.taxi_update_Page);
+
