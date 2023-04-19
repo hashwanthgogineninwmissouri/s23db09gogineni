@@ -137,7 +137,16 @@ exports.taxi_create_Page = function(req, res) {
     }
     };
 
-
-
-    
-    
+// Handle building the view for updating a taxi.
+// query provides the id
+exports.taxi_update_Page = async function(req, res) {
+console.log("update view for item "+req.query.id)
+try{
+let result = await taxi.findById(req.query.id)
+res.render('taxiupdate', { title: 'taxi Update', toShow: result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
