@@ -17,3 +17,6 @@ module.exports = router;
 
 // GET request for one taxi.
 router.get('/taxi/:id', taxi_controlers.taxi_detail);
+
+/* GET detail taxi page */
+router.get('/detail', taxi_controlers.taxi_view_one_Page);

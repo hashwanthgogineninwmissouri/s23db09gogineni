@@ -1,0 +1,22 @@
+extends layout
+block content
+ h1= title
+ - let taxiid = toShow._id
+ - let taxi_type = toShow.taxi
+ - let taxicost = toShow.cost
+ - let taxisize = toShow.size
+
+
+ div
+    div.row
+     div(class='taxiAttr mr-3') taxi ID is:
+     div #{taxiid}
+    div.row
+     div(class='taxiAttr mr-3') taxi Type is:
+     div #{taxi_type}
+    div.row
+     div(class='taxiAttr mr-3') taxi Size is:
+     div #{taxisize}
+    div.row
+     div(class='taxiAttr mr-3') taxi Cost is:
+     div #{taxicost}
