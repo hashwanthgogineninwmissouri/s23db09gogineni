@@ -1,13 +1,16 @@
 extends layout
+
 block content
- h1= title
- - let taxiid = toShow._id
- - let taxi_type = toShow.taxi
- - let taxicost = toShow.cost
- - let taxisize = toShow.size
+  h1=title
 
-
- div
+  if (toShow == null)
+   h2 No instance to delete
+  else
+   - let taxiid = toShow._id
+   - let taxi_type = toShow.taxi
+   - let taxicost = toShow.cost
+   - let taxisize = toShow.size
+  div
     div.row
      div(class='taxiAttr mr-3') taxi ID is:
      div #{taxiid}

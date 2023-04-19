@@ -26,3 +26,6 @@ router.get('/create', taxi_controlers.taxi_create_Page);
 
 /* GET create update page */
 router.get('/update', taxi_controlers.taxi_update_Page);
+
+// * GET delete taxi page */
+router.get('/delete', taxi_controlers.taxi_delete_Page);
